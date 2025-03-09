@@ -5,9 +5,9 @@ import schoolRoutes from "./routes/schoolRoutes";
 dotenv.config();
 
 const app = express();
-app.use(express.json()); // Ensure this is before defining routes
+app.use(express.json());
 
-// Use Routes
+
 app.use("/schools", schoolRoutes);
 
 const PORT = process.env.PORT || 3000;

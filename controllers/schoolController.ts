@@ -45,7 +45,7 @@ const calculateDistance = (
     lon2: number
   ): number => {
     const toRadians = (degree: number) => (degree * Math.PI) / 180;
-    const R = 6371; // Radius of Earth in km
+    const R = 6371; 
     const dLat = toRadians(lat2 - lat1);
     const dLon = toRadians(lon2 - lon1);
     const a =
@@ -55,14 +55,14 @@ const calculateDistance = (
         Math.sin(dLon / 2) *
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c; // Distance in km
+    return R * c; 
   };
   
-  // List Schools API Controller
+ 
   export const listSchools = async (req: Request, res: Response) => {
     const { latitude, longitude } = req.query;
   
-    // Validate query parameters
+   
     if (!latitude || !longitude) {
       return res.status(400).json({ error: "Latitude and longitude are required" });
     }
@@ -77,7 +77,7 @@ const calculateDistance = (
     try {
       const schools = await prisma.school.findMany();
   
-      // Calculate distance for each school and sort by proximity
+   
       const sortedSchools = schools
         .map((school) => ({
           ...school,
